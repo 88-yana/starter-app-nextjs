@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  sample-app-nextjs:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: sample-app-nextjs
+    image: sample-app-nextjs
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/sample-app-nextjs
+    env_file:
+      - .env
+    tty: true
+    stdin_open: true
+    command: sh -c "yarn install && yarn dev"
